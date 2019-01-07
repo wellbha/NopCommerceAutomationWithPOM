@@ -22,10 +22,9 @@ public class TestSuite extends BaseTests {
     public void registeredUserShouldBeAbleToSendEmailWithProductSuccessfully(){
         homePage.openHomePage();
         register.registration();
-        explicitWait1();
         product.clickOnProduct();
         emailFriend.emailFriendForRegisteredUser();
-        emailFriend.emailToFriendConfimationForRegisterUser();
+        emailFriend.emailToFriendConfirmationForRegisterUser();
     }
     @Test(priority = 3)
     public void unRegisteredUserShouldNotBeAbleToSendEmail(){
@@ -38,7 +37,6 @@ public class TestSuite extends BaseTests {
     public void userNeedToAcceptTermsAndConditionBeforeCheckOut(){
         homePage.openHomePage();
         register.registration();
-        explicitWait2();
         product.clickOnProduct1();
         basket.checkOutTermsConditions();
         basket.termsConditionConfirmation();
@@ -47,7 +45,6 @@ public class TestSuite extends BaseTests {
     public void registeredUserShouldBeAbleToBuyAnySingleProductSuccessfully(){
         homePage.openHomePage();
         register.registration();
-        explicitWait1();
         product.clickOnProduct2();
         checkout.checkOutDetails();
         checkout.checkOutConfirmation();
@@ -56,7 +53,6 @@ public class TestSuite extends BaseTests {
     public void userShouldBeAbleToSortByPriceHighToLow(){
         homePage.openHomePage();
         product.clickOnProduct3();
-        explicitWait3();
         product.sortProductConfirmation();
     }
 

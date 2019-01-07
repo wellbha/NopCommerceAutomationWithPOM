@@ -1,12 +1,9 @@
 package pageobjectmodelexample;
 
 import org.openqa.selenium.By;
-import org.testng.Assert;
 
-import static pageobjectmodelexample.Utils.clickElementBy;
-import static pageobjectmodelexample.Utils.enterText;
 
-public class EmailFriendPage extends BasePage {
+public class EmailFriendPage extends Utils {
     public void emailFriendForRegisteredUser(){
         //enter the value "rakesh@patel.com" in Friend's Email field
         enterText(By.id("FriendEmail"),"rakesh@patel.com");
@@ -16,11 +13,10 @@ public class EmailFriendPage extends BasePage {
         //click on send email button
         clickElementBy(By.name("send-email"));
     }
-    public void emailToFriendConfimationForRegisterUser(){
+    public void emailToFriendConfirmationForRegisterUser(){
         //registered user should be able to see the message "Your message has bee sent."
-        String expectedResult = "Your message has been sent.";
-        String actualResult = driver.findElement(By.xpath("//div[@class='page email-a-friend-page']/div[2]/div[contains(text(),'Your message has been sent.')]")).getText();
-        Assert.assertEquals(expectedResult,actualResult,"Test case : Test Fail");
+        getActualText(By.xpath("//div[@class='page email-a-friend-page']/div[2]/div[contains(text(),'Your message has been sent.')]"));
+        validation("Your message has been sent.");
     }
 
     public void emailFriendForNonRegisterUser(){
@@ -35,9 +31,8 @@ public class EmailFriendPage extends BasePage {
     }
     public void emailToFriendConfirmationForNonRegisterUser(){
         //"Only registered customers can use email a friend feature" unsuccessful message should be display
-        String expectedResult = "Only registered customers can use email a friend feature";
-        String actualResult = driver.findElement(By.xpath("//div[@class=\"message-error validation-summary-errors\"]/ul/li")).getText();
-        Assert.assertEquals(expectedResult,actualResult,"Test case : Test Fail");
+        getActualText(By.xpath("//div[@class=\"message-error validation-summary-errors\"]/ul/li"));
+        validation("Only registered customers can use email a friend feature");
     }
 
 

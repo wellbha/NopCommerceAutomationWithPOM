@@ -1,19 +1,15 @@
 package pageobjectmodelexample;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
 
 import static pageobjectmodelexample.Utils.*;
 
-public class CheckOutPage {
+public class CheckOutPage extends Utils {
     public void checkOutDetails(){
-        //wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("BillingNewAddress_CountryId")));
-        Select country = new Select(driver.findElement(By.id("BillingNewAddress_CountryId")));
         //registered user details will be autofilled
         //select the value "United Kingdom" in the country field
-        country.selectByVisibleText("United Kingdom");
+        select(By.id("BillingNewAddress_CountryId"),"United Kingdom");
         //enter "Wembley" in the city field
         enterText(By.id("BillingNewAddress_City"),"Wembley");
         //enter the value "123 First Street" in Address 1 field
@@ -50,8 +46,7 @@ public class CheckOutPage {
     }
     public void checkOutConfirmation(){
         //"Your order has been successfully processed!" message should be displayed
-        String expectedResult = "Your order has been successfully processed!";
-        String actualResult = driver.findElement(By.xpath("//strong[contains(text(),'Your order has been successfully processed!')]")).getText();
-        Assert.assertEquals(expectedResult,actualResult,"Test case : Test Fail");
+        getActualText(By.xpath("//strong[contains(text(),'Your order has been successfully processed!')]"));
+        validation("Your order has been successfully processed!");
     }
 }

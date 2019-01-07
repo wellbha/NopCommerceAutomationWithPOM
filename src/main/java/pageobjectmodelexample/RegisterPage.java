@@ -1,16 +1,14 @@
 package pageobjectmodelexample;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import static org.testng.Assert.*;
+
 
 public class RegisterPage extends Utils{
+
     public void registration(){
         //click on register button
         clickElementBy(By.linkText("Register"));
@@ -21,14 +19,11 @@ public class RegisterPage extends Utils{
         //enter "MySurname" in Last name field
         enterText(By.id("LastName"),"MySurname");
         //select the value "20" for Day field of Date of Birth
-        Select day = new Select(driver.findElement(By.name("DateOfBirthDay")));
-        day.selectByValue("20");
+        selectByValue(By.name("DateOfBirthDay"),"20");
         //select the value "May" for the Month field of Date of Birth
-        Select month = new Select(driver.findElement(By.name("DateOfBirthMonth")));
-        month.selectByIndex(5);
+        selectByIndex(By.name("DateOfBirthMonth"),5);
         //select the value "1950" for the year field of Date of Birth
-        Select year = new Select(driver.findElement(By.name("DateOfBirthYear")));
-        year.selectByValue("1950");
+        selectByValue(By.name("DateOfBirthYear"),"1950");
         DateFormat dateFormat = new SimpleDateFormat("DDMMYYYHHMMSS");
         Date date = new Date();
         String date1 = dateFormat.format(date);
@@ -46,10 +41,9 @@ public class RegisterPage extends Utils{
         clickElementBy(By.id("register-button"));
     }
     public void registrationConfirmation(){
-        String actualResult = driver.findElement(By.xpath("//div[@class='result']")).getText();
+        getActualText(By.xpath("//div[@class='result']"));
         //user should be able to see the message "Your registration completed" if successful
-        String expectedResult = "Your registration completed";
-        Assert.assertEquals(expectedResult,actualResult,"Test Fail");
+        validation("Your registration completed");
         //click on Log out button
         findElementBy(By.linkText("Log out"));
     }
