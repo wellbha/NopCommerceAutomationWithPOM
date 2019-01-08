@@ -1,14 +1,9 @@
 package pageobjectmodelexample;
 
 import org.openqa.selenium.By;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-
 
 public class RegisterPage extends Utils{
-
+        String timeStamp;
     public void registration(){
         //click on register button
         clickElementBy(By.linkText("Register"));
@@ -24,11 +19,7 @@ public class RegisterPage extends Utils{
         selectByIndex(By.name("DateOfBirthMonth"),5);
         //select the value "1950" for the year field of Date of Birth
         selectByValue(By.name("DateOfBirthYear"),"1950");
-        DateFormat dateFormat = new SimpleDateFormat("DDMMYYYHHMMSS");
-        Date date = new Date();
-        String date1 = dateFormat.format(date);
-        //enter the value "Bhavin@home.com" in email field
-        driver.findElement(By.id("Email")).sendKeys("Bhavin+"+date1+"@home.com");
+        emailWithTimeStamp(By.id("Email"));
         //enter the value "My Company" in the company field
         enterText(By.id("Company"),"My Company");
         //tick the Newsletter check box

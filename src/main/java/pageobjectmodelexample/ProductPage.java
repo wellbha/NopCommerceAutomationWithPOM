@@ -1,15 +1,12 @@
 package pageobjectmodelexample;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 
 public class ProductPage extends Utils{
     public void clickOnProduct(){
-        new WebDriverWait(driver,20).until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Computers")));
+        explicitWaitForVisibility(By.linkText("Computers"));
         //click on Computers
         clickElementBy(By.linkText("Computers"));
         //click on Notebooks
@@ -20,7 +17,7 @@ public class ProductPage extends Utils{
         clickElementBy(By.xpath("//input[@value='Email a friend']"));
     }
     public void clickOnProduct1(){
-        new WebDriverWait(driver,20).until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Computers")));
+        explicitWaitForVisibility(By.linkText("Computers"));
         clickElementBy(By.linkText("Computers"));
         //click on Notebooks
         clickElementBy(By.linkText("Notebooks"));
@@ -33,7 +30,7 @@ public class ProductPage extends Utils{
 
     }
     public void clickOnProduct2(){
-        new WebDriverWait(driver,20).until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Computers")));
+        explicitWaitForVisibility(By.linkText("Computers"));
         clickElementBy(By.linkText("Computers"));
         //click on Notebooks
         clickElementBy(By.linkText("Notebooks"));
@@ -56,11 +53,10 @@ public class ProductPage extends Utils{
         //click on Notebooks
         clickElementBy(By.linkText("Notebooks"));
         //select the value "Price: High to Low" from sort by field
-        Select sortBy = new Select(driver.findElement(By.id("products-orderby")));
-        sortBy.selectByVisibleText("Price: High to Low");
+        select(By.id("products-orderby"),"Price: High to Low");
     }
     public void sortProductConfirmation(){
-        new WebDriverWait(driver,20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@data-productid='7']")));
+        explicitWaitForVisibility(By.xpath("//div[@data-productid='7']"));
         //verify the products loaded on the page high to low in price by checking first price and last price
         String firstProductPrice = driver.findElement(By.xpath("//div[@data-productid='4']/div[2]/div[3]/div/span")).getText();
         String lastProductPrice = driver.findElement(By.xpath("//div[@data-productid='7']/div[2]/div[3]/div/span")).getText();

@@ -1,12 +1,19 @@
 package pageobjectmodelexample;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Utils extends BasePage {
     static String actualResult;
     static Select value;
+    static String timestamp;
 
     // WebDriverWait wait = new WebDriverWait(driver,20);
 
@@ -43,5 +50,14 @@ public class Utils extends BasePage {
     static void select(By by,String data){
         Select value = new Select(driver.findElement(by));
         value.selectByVisibleText(data);
+    }
+    static void explicitWaitForVisibility(By by){
+        WebDriverWait wait = new WebDriverWait(driver,20);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+    }
+    static void emailWithTimeStamp(By by){
+        //String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Timestamp());
+        String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+        driver.findElement(by).sendKeys("Bhavin+"+timeStamp+"@home.com");
     }
 }

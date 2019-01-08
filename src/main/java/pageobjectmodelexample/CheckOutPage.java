@@ -1,9 +1,6 @@
 package pageobjectmodelexample;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.Select;
-
-import static pageobjectmodelexample.Utils.*;
 
 public class CheckOutPage extends Utils {
     public void checkOutDetails(){
@@ -32,11 +29,9 @@ public class CheckOutPage extends Utils {
         //enter the value "4111 1111 1111 1111" in the card number field
         enterText(By.id("CardNumber"),"4111 1111 1111 1111");
         //select the value "02" in the expiry month field
-        Select expiryMonth = new Select(driver.findElement(By.id("ExpireMonth")));
-        expiryMonth.selectByValue("2");
+        selectByValue(By.id("ExpireMonth"),"2");
         //select the value "2020" in the expiry year value
-        Select expiryYear = new Select(driver.findElement(By.id("ExpireYear")));
-        expiryYear.selectByValue("2020");
+        selectByValue(By.id("ExpireYear"),"2020");
         //enter the value "737" in the card code field
         enterText(By.id("CardCode"),"737");
         //click on continue button
