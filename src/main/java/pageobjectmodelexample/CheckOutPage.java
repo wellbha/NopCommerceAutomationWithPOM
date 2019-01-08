@@ -17,7 +17,6 @@ public class CheckOutPage extends Utils {
         enterText(By.id("BillingNewAddress_PhoneNumber"),"07866638787");
         //click on continue button
         clickElementBy(By.id("billing-buttons-container"));
-       // wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("shipping-method-buttons-container")));
         //accept default value and click on continue button
         clickElementBy(By.id("shipping-method-buttons-container"));
         //click on credit card radio button
