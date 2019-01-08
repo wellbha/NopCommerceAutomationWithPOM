@@ -56,7 +56,6 @@ public class Utils extends BasePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(by));
     }
     static void emailWithTimeStamp(By by){
-        //String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Timestamp());
         String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
         driver.findElement(by).sendKeys("Bhavin+"+timeStamp+"@home.com");
     }
