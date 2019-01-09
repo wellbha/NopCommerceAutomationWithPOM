@@ -19,7 +19,8 @@ public class RegisterPage extends Utils{
         selectByIndex(By.name("DateOfBirthMonth"),5);
         //select the value "1950" for the year field of Date of Birth
         selectByValue(By.name("DateOfBirthYear"),"1950");
-        emailWithTimeStamp(By.id("Email"));
+        //emailWithTimeStamp(By.id("Email"));
+        enterText(By.id("Email"),"bhavin+"+timeStamp()+"@home.com" );
         //enter the value "My Company" in the company field
         enterText(By.id("Company"),"My Company");
         //tick the Newsletter check box
