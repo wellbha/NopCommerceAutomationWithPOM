@@ -7,6 +7,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.FieldPosition;
+import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -58,5 +61,11 @@ public class Utils extends BasePage {
     static void emailWithTimeStamp(By by){
         String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
         driver.findElement(by).sendKeys("Bhavin+"+timeStamp+"@home.com");
+    }
+    public static String timeStamp(){
+        DateFormat dateFormat = new SimpleDateFormat("ddmmyyyyhhmmss");
+        Date date = new Date();
+        String date1 = dateFormat.format(date);
+        return date1;
     }
 }
