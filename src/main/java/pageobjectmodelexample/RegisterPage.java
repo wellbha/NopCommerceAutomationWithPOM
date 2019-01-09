@@ -3,8 +3,7 @@ package pageobjectmodelexample;
 import org.openqa.selenium.By;
 
 public class RegisterPage extends Utils{
-        String timeStamp;
-    public void registration(){
+        public void registration(){
         //click on register button
         clickElementBy(By.linkText("Register"));
         //select the male gender option
