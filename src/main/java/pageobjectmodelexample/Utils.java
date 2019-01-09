@@ -62,7 +62,7 @@ public class Utils extends BasePage {
         String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
         driver.findElement(by).sendKeys("Bhavin+"+timeStamp+"@home.com");
     }
-    public static String timeStamp(){
+    static String timeStamp(){
         DateFormat dateFormat = new SimpleDateFormat("ddmmyyyyhhmmss");
         Date date = new Date();
         String date1 = dateFormat.format(date);
