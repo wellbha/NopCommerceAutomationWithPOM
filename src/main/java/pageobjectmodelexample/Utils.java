@@ -58,6 +58,10 @@ public class Utils extends BasePage {
         WebDriverWait wait = new WebDriverWait(driver,20);
         wait.until(ExpectedConditions.visibilityOfElementLocated(by));
     }
+    static void explicityWaitForClickable(By by){
+        WebDriverWait wait = new WebDriverWait(driver,20);
+        wait.until(ExpectedConditions.elementToBeClickable(by));
+    }
     static void emailWithTimeStamp(By by){
         String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
         driver.findElement(by).sendKeys("Bhavin+"+timeStamp+"@home.com");
