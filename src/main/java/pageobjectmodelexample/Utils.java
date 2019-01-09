@@ -47,6 +47,9 @@ public class Utils extends BasePage {
     static void getActualText(By by){
         actualResult = driver.findElement(by).getText();
     }
+    static void getAttributeValue(By by, String value){
+        driver.findElement(by).getAttribute(value);
+    }
     static void validation(String expectedResult){
         Assert.assertEquals(actualResult,expectedResult);
     }
