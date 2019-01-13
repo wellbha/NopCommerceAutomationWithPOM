@@ -44,8 +44,8 @@ public class Utils extends BasePage {
         Select dob = new Select(driver.findElement(by));
         dob.selectByValue(data);
     }
-    static void getActualText(By by){
-        actualResult = driver.findElement(by).getText();
+    static String getActualText(By by){
+        return actualResult = driver.findElement(by).getText();
     }
     static void validation(String expectedResult){
         Assert.assertEquals(actualResult,expectedResult);
