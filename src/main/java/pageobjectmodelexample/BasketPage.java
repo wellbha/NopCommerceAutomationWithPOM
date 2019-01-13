@@ -3,12 +3,16 @@ package pageobjectmodelexample;
 import org.openqa.selenium.By;
 
 public class BasketPage extends Utils {
-    public void checkOutTermsConditions(){
+//   By checkout = By.id("checkout");
+//   By terms = By.id("terms-of-service-warning-box");
+    HomePage locObj = new HomePage();
+
+   public void checkOutTermsConditions(){
         //click on the CHECKOUT button
-        clickElementBy(By.id("checkout"));
+        clickElementBy(locObj.checkout);
     }
     public void termsConditionConfirmation(){
-        getActualText(By.id("terms-of-service-warning-box"));
+        getActualText(locObj.terms);
         validation("Please accept the terms of service before the next step.");
     }
 }

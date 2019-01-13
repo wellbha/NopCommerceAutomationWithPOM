@@ -55,6 +55,11 @@ public class TestSuite extends BaseTests {
         product.clickOnProduct3();
         product.sortProductConfirmation();
     }
+    @Test(priority = 7)
+    public void takeScreenShotForFailTestCase(){
+        homePage.openHomePage();
+        register.screenshotForFailTest();
+    }
 
 
 }

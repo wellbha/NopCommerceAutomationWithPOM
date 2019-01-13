@@ -3,9 +3,11 @@ package pageobjectmodelexample;
 import org.openqa.selenium.By;
 
 public class RegisterPage extends Utils{
-        public void registration(){
+    HomePage locObj = new HomePage();
+
+    public void registration(){
         //click on register button
-        clickElementBy(By.linkText("Register"));
+        clickElementBy(locObj.register);
         //select the male gender option
         clickElementBy(By.id("gender-male"));
         //enter "MyFirstName" in First name field
@@ -18,8 +20,7 @@ public class RegisterPage extends Utils{
         selectByIndex(By.name("DateOfBirthMonth"),5);
         //select the value "1950" for the year field of Date of Birth
         selectByValue(By.name("DateOfBirthYear"),"1950");
-        //emailWithTimeStamp(By.id("Email"));
-        enterText(By.id("Email"),"bhavin+"+timeStamp()+"@home.com" );
+        emailWithTimeStamp(locObj.email);
         //enter the value "My Company" in the company field
         enterText(By.id("Company"),"My Company");
         //tick the Newsletter check box
@@ -29,13 +30,19 @@ public class RegisterPage extends Utils{
         //enter the value "mypass" in the Confirm Password field
         enterText(By.id("ConfirmPassword"),"mypass");
         //click on register button
-        clickElementBy(By.id("register-button"));
+        clickElementBy(locObj.registerBtn);
     }
     public void registrationConfirmation(){
         getActualText(By.xpath("//div[@class='result']"));
         //user should be able to see the message "Your registration completed" if successful
         validation("Your registration completed");
         //click on Log out button
-        findElementBy(By.linkText("Log out"));
+        findElementBy(locObj.logout);
+    }
+    public void screenshotForFailTest(){
+        //click on register button
+        clickElementBy(locObj.register);
+        //select the male gender option
+        clickElementBy(By.id("gander-male"));
     }
 }
