@@ -47,6 +47,9 @@ public class Utils extends BasePage {
     static String getActualText(By by){
         return actualResult = driver.findElement(by).getText();
     }
+    static void getAttributeValue(By by, String value){
+        driver.findElement(by).getAttribute(value);
+    }
     static void validation(String expectedResult){
         Assert.assertEquals(actualResult,expectedResult);
     }
@@ -58,11 +61,15 @@ public class Utils extends BasePage {
         WebDriverWait wait = new WebDriverWait(driver,20);
         wait.until(ExpectedConditions.visibilityOfElementLocated(by));
     }
+    static void explicityWaitForClickable(By by){
+        WebDriverWait wait = new WebDriverWait(driver,20);
+        wait.until(ExpectedConditions.elementToBeClickable(by));
+    }
     static void emailWithTimeStamp(By by){
         String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
         driver.findElement(by).sendKeys("Bhavin+"+timeStamp+"@home.com");
     }
-    public static String timeStamp(){
+    static String timeStamp(){
         DateFormat dateFormat = new SimpleDateFormat("ddmmyyyyhhmmss");
         Date date = new Date();
         String date1 = dateFormat.format(date);
