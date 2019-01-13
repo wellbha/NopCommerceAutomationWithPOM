@@ -3,7 +3,7 @@ package pageobjectmodelexample;
 import org.openqa.selenium.By;
 
 public class RegisterPage extends Utils{
-        String timeStamp;
+
     public void registration(){
         //click on register button
         clickElementBy(By.linkText("Register"));
@@ -37,5 +37,11 @@ public class RegisterPage extends Utils{
         validation("Your registration completed");
         //click on Log out button
         findElementBy(By.linkText("Log out"));
+    }
+    public void screenshotForFailTest(){
+        //click on register button
+        clickElementBy(By.linkText("Register"));
+        //select the male gender option
+        clickElementBy(By.id("gander-male"));
     }
 }
