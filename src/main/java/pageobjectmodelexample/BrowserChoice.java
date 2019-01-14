@@ -9,8 +9,10 @@ import org.openqa.selenium.ie.InternetExplorerOptions;
 public class BrowserChoice extends Utils{
 LoadProp loadProp = new LoadProp();
 public void browser(){
+
             String browser=loadProp.getProperty("browser");
 //            String browser=System.getProperty("browser");
+
         if (browser.equalsIgnoreCase("firefox")){
             System.setProperty("webdriver.gecko.driver","src\\test\\Resources\\BrowserDriver\\geckodriver.exe");
             System.setProperty(FirefoxDriver.SystemProperty.DRIVER_USE_MARIONETTE,"true");
