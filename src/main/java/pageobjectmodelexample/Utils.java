@@ -81,26 +81,26 @@ public class Utils extends BasePage {
     }
 
     //wait for visibility of element with given time
-    static void explicitWaitForVisibility(By by){
-        WebDriverWait wait = new WebDriverWait(driver,20);
+    static void explicitWaitForVisibility(By by, int seconds){
+        WebDriverWait wait = new WebDriverWait(driver,seconds);
         wait.until(ExpectedConditions.visibilityOfElementLocated(by));
     }
 
     //wait for locator to be clickable for given time in seconds
-    static void waitForLocatorClickable(By by){
-        WebDriverWait wait = new WebDriverWait(driver,20);
+    static void waitForLocatorToBeClickable(By by, int seconds){
+        WebDriverWait wait = new WebDriverWait(driver,seconds);
         wait.until(ExpectedConditions.elementToBeClickable(by));
     }
 
     //wait for WebElement to be clickable fo given time in seconds
-    static void waitForWebElementClickable(WebElement element){
-        WebDriverWait wait = new WebDriverWait(driver,20);
+    static void waitForWebElementToBeClickable(WebElement element, int seconds){
+        WebDriverWait wait = new WebDriverWait(driver,seconds);
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
     //wiat for element to be invisible
-    static void elementToBeInvisible(WebElement element){
-        WebDriverWait wait = new WebDriverWait(driver,20);
+    static void elementToBeInvisible(WebElement element, int seconds){
+        WebDriverWait wait = new WebDriverWait(driver,seconds);
         wait.until(ExpectedConditions.invisibilityOf(element));
     }
 
@@ -140,11 +140,11 @@ public class Utils extends BasePage {
     }
 
     //scroll to view element
-    public void scrollToElement(By by,WebElement element){
+    public void scrollToElement(By by,WebElement element, int seconds){
         try {
             ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
             driver.findElement(by);
-            Thread.sleep(500);
+            Thread.sleep(seconds);
         }catch (InterruptedException e){
             e.printStackTrace();
         }
@@ -164,7 +164,7 @@ public class Utils extends BasePage {
         driver.findElement(by).sendKeys("Bhavin+"+timeStamp+"@home.com");
     }
 
-    //timestamp
+    //timestamp or date in to string conversation
     public static String timeStamp(){
         DateFormat dateFormat = new SimpleDateFormat("DD.MM.YY.HH.MM.SS");
         Date date = new Date();
@@ -222,18 +222,20 @@ public class Utils extends BasePage {
     }
 
     //take screenshot of browser
-    public void takeScreenShotofBrowser() throws IOException {
+    public void takeScreenShotOfBrowser(String destination_folder) throws IOException {
         File source_folder = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        File destination_folder = new File ("Destination folder path");
-        FileUtils.copyFile(source_folder, destination_folder);
+//        File destination_folder = new File ("Destination folder path");
+        FileUtils.copyFile(source_folder, new File(destination_folder));
     }
 
     //take screenshot of current display (full)
-    public void takeScreenShotOfCurrentDisplayFull() throws IOException {
+    public void takeScreenShotOfCurrentDisplayFull(String destination_folder) throws IOException {
         Screenshot screenshot = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(500)).takeScreenshot(driver);
-        File destination_folder = new File("Destination folder path");
-        ImageIO.write(screenshot.getImage(),"JPG", destination_folder);
+//        File destination_folder = new File("Destination folder path");
+        ImageIO.write(screenshot.getImage(),"JPG", new File(destination_folder));
     }
+
+
 
 
 }
