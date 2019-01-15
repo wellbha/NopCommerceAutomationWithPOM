@@ -109,6 +109,7 @@ public class Utils extends BasePage {
         String value = element.getAttribute(attr);
         return value;
     }
+
     //check if the alert is present
     public boolean isAlertPresent() {
         boolean present = false;
@@ -125,11 +126,13 @@ public class Utils extends BasePage {
         }
         return present;
     }
+
     // get css property of element
     public String getCssPropOfElement(WebElement element, String css){
         String value = element.getCssValue(css);
         return value;
     }
+
     //scroll to element and click
     public void scrollTillElementFoundAndClick(By by,WebElement element){
         ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);",element);
@@ -191,7 +194,7 @@ public class Utils extends BasePage {
         }
     }
 
-    //checking WebElement present in DOM
+    //checking WebElement is displayed in DOM
     public boolean isElementDisplayed(By by){
         try{
             driver.findElement(by).isDisplayed();
@@ -217,6 +220,7 @@ public class Utils extends BasePage {
         }
         return result;
     }
+
     //take screenshot of browser
     public void takeScreenShotofBrowser() throws IOException {
         File source_folder = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
