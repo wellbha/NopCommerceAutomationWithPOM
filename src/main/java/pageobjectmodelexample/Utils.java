@@ -1,11 +1,19 @@
 package pageobjectmodelexample;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.ITestResult;
+import ru.yandex.qatools.ashot.AShot;
+import ru.yandex.qatools.ashot.Screenshot;
+import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
 
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -209,5 +217,19 @@ public class Utils extends BasePage {
         }
         return result;
     }
+    //take screenshot of browser
+    public void takeScreenShotofBrowser() throws IOException {
+        File source_folder = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        File destination_folder = new File ("Destination folder path");
+        FileUtils.copyFile(source_folder, destination_folder);
+    }
+
+    //take screenshot of current display (full)
+    public void takeScreenShotOfCurrentDisplayFull() throws IOException {
+        Screenshot screenshot = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(500)).takeScreenshot(driver);
+        File destination_folder = new File("Destination folder path");
+        ImageIO.write(screenshot.getImage(),"JPG", destination_folder);
+    }
+
 
 }
