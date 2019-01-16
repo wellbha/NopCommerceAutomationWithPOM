@@ -6,8 +6,8 @@ public class RegisterPage extends Utils{
 
     By register = By.linkText("Register");
     By email = By.id("Email");
-    By registerBtn = By.id("register-button");
-    By logout = By.linkText("Log out");
+    By register_Btn = By.id("register-button");
+    By logoutBtn = By.linkText("Log out");
     LoadProp loadProp = new LoadProp();
 
     public void registration(){
@@ -37,14 +37,14 @@ public class RegisterPage extends Utils{
         //enter the value "mypass" in the Confirm Password field
         enterText(By.id("ConfirmPassword"),loadProp.getProperty("password"));
         //click on register button
-        clickElementBy(registerBtn);
+        clickElementBy(register_Btn);
     }
     public void registrationConfirmation(){
         getActualText(By.xpath("//div[@class='result']"));
         //user should be able to see the message "Your registration completed" if successful
         validation(loadProp.getProperty("confirmRegistration"));
         //click on Log out button
-        findElementBy(logout);
+        findElementBy(logoutBtn);
     }
     public void screenshotForFailTest(){
         //click on register button

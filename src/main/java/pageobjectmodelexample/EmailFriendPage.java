@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 
 public class EmailFriendPage extends Utils {
 
-    By sendmail = By.name("send-email");
+    By send_mail = By.name("send-email");
     LoadProp loadProp = new LoadProp();
 
     public void emailFriendForRegisteredUser(){
@@ -15,7 +15,7 @@ public class EmailFriendPage extends Utils {
         //Enter the value "Best one for you!!!! in the Personal message field
         enterText(By.id("PersonalMessage"),loadProp.getProperty("msgToFriend"));
         //click on send email button
-        clickElementBy(sendmail);
+        clickElementBy(send_mail);
     }
     public void emailToFriendConfirmationForRegisterUser(){
         //registered user should be able to see the message "Your message has bee sent."
@@ -31,7 +31,7 @@ public class EmailFriendPage extends Utils {
         //Enter the value "Best one for you!!!! in the Personal message field
         enterText(By.id("PersonalMessage"),loadProp.getProperty("msgToFriend"));
         //click on send email button
-        clickElementBy(sendmail);
+        clickElementBy(send_mail);
     }
     public void emailToFriendConfirmationForNonRegisterUser(){
         //"Only registered customers can use email a friend feature" unsuccessful message should be display

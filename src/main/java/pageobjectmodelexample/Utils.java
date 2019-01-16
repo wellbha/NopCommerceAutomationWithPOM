@@ -234,6 +234,14 @@ public class Utils extends BasePage {
         ImageIO.write(screenshot.getImage(),"JPG", new File(destination_folder));
     }
 
+    //convert date to string
+    public String dateToString(){
+        Date date = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("ddmmyy");
+        String strDate = dateFormat.format(date);
+        return strDate;
+    }
+
 
 
 
