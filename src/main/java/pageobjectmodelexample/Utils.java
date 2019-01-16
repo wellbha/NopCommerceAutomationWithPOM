@@ -6,7 +6,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.ITestResult;
 import ru.yandex.qatools.ashot.AShot;
 import ru.yandex.qatools.ashot.Screenshot;
 import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
@@ -65,7 +64,7 @@ public class Utils extends BasePage {
     }
 
     //get the text value from the element
-    static String getActualText(By by){
+    public static String getActualText(By by){
         return actualResult = driver.findElement(by).getText();
     }
 
@@ -87,7 +86,7 @@ public class Utils extends BasePage {
     }
 
     //wait for locator to be clickable for given time in seconds
-    static void waitForLocatorToBeClickable(By by, int seconds){
+    public static void waitForLocatorToBeClickable(By by, int seconds){
         WebDriverWait wait = new WebDriverWait(driver,seconds);
         wait.until(ExpectedConditions.elementToBeClickable(by));
     }
